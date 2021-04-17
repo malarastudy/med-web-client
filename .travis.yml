@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dml00/med-web-client -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true dml00/med-web-client npm run test
